@@ -4,7 +4,7 @@
 
 - Tên nhóm: `DAY13_2A202601273_HOANGSYTOAN`
 - Repository URL: `https://github.com/HoangToan-nobi/DAY13_K3_Claudex`
-- Commit SHA cuối: `11ee5cf03a2977786c4fc20840d929563309fbcc`
+- Commit SHA cuối: `ab262d355cf631eb79476ce9174226dc1f952e8b`
 - Thành viên và vai trò:
   - `Hoàng Sỹ Toàn - 2A202601273` — Logging & PII
   - `Nguyễn Phương Linh - 2A202601355` — Tracing & Prompt Version
