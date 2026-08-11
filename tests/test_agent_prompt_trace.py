@@ -57,3 +57,28 @@ def test_agent_links_prompt_version_to_trace_and_generation(monkeypatch) -> None
     }
     assert generation_update["prompt"] is client.prompt
     assert generation_update["metadata"]["prompt_version"] == "3"
+
+
+def test_agent_links_correlation_id_to_trace(monkeypatch) -> None:
+    import structlog
+    monkeypatch.setenv("LANGFUSE_PUBLIC_KEY", "test-public-key")
+    monkeypatch.setenv("LANGFUSE_SECRET_KEY", "test-secret-key")
+    client = RecordingLangfuseClient()
+    monkeypatch.setattr(agent_module, "get_langfuse_client", lambda: client)
+    
+    structlog.contextvars.bind_contextvars(correlation_id="test-correlation-id")
+    try:
+        agent = agent_module.LabAgent()
+        agent_module.LabAgent.run.__wrapped__(
+            agent,
+            user_id="student-01",
+            feature="qa",
+            session_id="session-01",
+            message="Explain traces",
+        )
+    finally:
+        structlog.contextvars.clear_contextvars()
+
+    trace_metadata = client.trace_updates[-1]["metadata"]
+    assert trace_metadata["correlation_id"] == "test-correlation-id"
+
