@@ -4,7 +4,7 @@
 
 - Tên nhóm: `DAY13_2A202601273_HOANGSYTOAN`
 - Repository URL: `https://github.com/HoangToan-nobi/DAY13_2A202601273_HOANGSYTOAN`
-- Commit SHA cuối: `[CẦN BỔ SUNG SAU COMMIT CUỐI]`
+- Commit SHA cuối: `f0f265425b68176b031f689b0f2939b1a8ff65df`
 - Thành viên và vai trò:
   - `Hoàng Sỹ Toàn - 2A202601273` — Logging & PII
   - `Nguyễn Phương Linh - 2A202601355` — Tracing & Prompt Version
@@ -57,7 +57,7 @@ Với mỗi thành viên, ghi rõ nhiệm vụ và link commit/PR tương ứng.
 |---|---|---|---|
 | `Toàn` | Correlation ID, JSON logging, metadata và PII redaction | `e931dc3` | Bảo toàn context request và scrub PII trước khi ghi log. |
 | `plxgplxgplxg` | Trace correlation metadata và test liên quan | `f06f615` | Liên kết correlation ID giữa log và trace. |
-| `dalex0512` | Dashboard contract/spec, SLO, alerts, runbook, incident và tổng hợp report | `97cc025`; `[SHA PHẦN HOÀN THIỆN NÀY SAU COMMIT]` | Thiết kế alert theo triệu chứng và điều tra theo Metrics → Traces → Logs. |
+| `dalex0512` | Dashboard contract/spec, SLO, alerts, runbook, incident và tổng hợp report | `97cc025`; `f0f265425b68176b031f689b0f2939b1a8ff65df` | Thiết kế alert theo triệu chứng và điều tra theo Metrics → Traces → Logs. |
 
 ## 8. Checklist evidence còn thiếu trước khi nộp
 
