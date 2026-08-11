@@ -3,8 +3,8 @@
 ## 1. Thông tin nhóm
 
 - Tên nhóm: `DAY13_2A202601273_HOANGSYTOAN`
-- Repository URL: `https://github.com/HoangToan-nobi/DAY13_2A202601273_HOANGSYTOAN`
-- Commit SHA cuối: `f0f265425b68176b031f689b0f2939b1a8ff65df`
+- Repository URL: `https://github.com/HoangToan-nobi/DAY13_K3_Claudex`
+- Commit SHA cuối: `11ee5cf03a2977786c4fc20840d929563309fbcc`
 - Thành viên và vai trò:
   - `Hoàng Sỹ Toàn - 2A202601273` — Logging & PII
   - `Nguyễn Phương Linh - 2A202601355` — Tracing & Prompt Version
@@ -55,9 +55,9 @@ Với mỗi thành viên, ghi rõ nhiệm vụ và link commit/PR tương ứng.
 
 | Thành viên | Phần việc | Commit/PR | Điều đã học |
 |---|---|---|---|
-| `Toàn` | Correlation ID, JSON logging, metadata và PII redaction | `e931dc3` | Bảo toàn context request và scrub PII trước khi ghi log. |
-| `plxgplxgplxg` | Trace correlation metadata và test liên quan | `f06f615` | Liên kết correlation ID giữa log và trace. |
-| `dalex0512` | Dashboard contract/spec, SLO, alerts, runbook, incident và tổng hợp report | `97cc025`; `f0f265425b68176b031f689b0f2939b1a8ff65df` | Thiết kế alert theo triệu chứng và điều tra theo Metrics → Traces → Logs. |
+| `Hoàng Sỹ Toàn` | Correlation ID, JSON logging, metadata và PII redaction | `e931dc3` | Bảo toàn context request và scrub PII trước khi ghi log. |
+| `Nguyễn Phương Linh` | Trace correlation metadata và test liên quan | `f06f615` | Liên kết correlation ID giữa log và trace. |
+| `Đặng Quốc Huy` | Dashboard contract/spec, SLO, alerts, runbook, incident và tổng hợp report | `97cc025`; `11ee5cf03a...` | Thiết kế alert theo triệu chứng và điều tra theo Metrics → Traces → Logs. |
 
 ## 8. Checklist evidence còn thiếu trước khi nộp
 
