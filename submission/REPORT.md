@@ -58,11 +58,3 @@ Với mỗi thành viên, ghi rõ nhiệm vụ và link commit/PR tương ứng.
 | `Hoàng Sỹ Toàn` | Correlation ID, JSON logging, metadata và PII redaction | `e931dc3` | Bảo toàn context request và scrub PII trước khi ghi log. |
 | `Nguyễn Phương Linh` | Trace correlation metadata và test liên quan | `f06f615` | Liên kết correlation ID giữa log và trace. |
 | `Đặng Quốc Huy` | Dashboard contract/spec, SLO, alerts, runbook, incident và tổng hợp report | `97cc025`; `11ee5cf03a...` | Thiết kế alert theo triệu chứng và điều tra theo Metrics → Traces → Logs. |
-
-## 8. Checklist evidence còn thiếu trước khi nộp
-
-- [x] Kết quả cuối `validate_logs.py` và kiểm tra PII.
-- [x] Danh sách ≥ 10 traces, waterfall và prompt version/rollback từ Thành viên 2.
-- [x] Dashboard runtime đủ 6 panel, time range 60 phút, đơn vị và threshold.
-- [x] Metric trước/sau challenge và log đã có; còn thiếu trace ID Langfuse cùng request.
-- [ ] Repository URL, tên thành viên, commit/PR và commit SHA cuối (Chờ bạn push lên Github để điền SHA).
