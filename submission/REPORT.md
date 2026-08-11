@@ -6,14 +6,14 @@
 - Repository URL: `https://github.com/HoangToan-nobi/DAY13_2A202601273_HOANGSYTOAN`
 - Commit SHA cuối: `[CẦN BỔ SUNG SAU COMMIT CUỐI]`
 - Thành viên và vai trò:
-  - `Toàn` — Logging & PII
-  - `plxgplxgplxg` — Tracing & Prompt Version
-  - `dalex0512` — Dashboard, Incident & Report
+  - `Hoàng Sỹ Toàn - 2A202601273` — Logging & PII
+  - `Nguyễn Phương Linh - 2A202601355` — Tracing & Prompt Version
+  - `Đỗ Thái Dương - 2A202601337` — Dashboard, Incident & Report
 
 ## 2. Kết quả kỹ thuật
 
 - Điểm `validate_logs.py`: `100/100` — [validation-results.txt](evidence/validation-results.txt)
-- Tổng số traces: `[CHỜ EVIDENCE TỪ THÀNH VIÊN 2; yêu cầu ≥ 10]`
+- Tổng số traces: `50` traces hợp lệ đã có trên Langfuse. 10 Trace ID ví dụ: `923ff7aa26da...`, `e91305c2d4d8...`, `a494ddd163c7...`, `691d58d20442...`, `dcf02d843fc0...`, `72219bc3252c...`, `1faf3af4c3ee...`, `fefad95d154c...`, `c1e28d7aaeac...`, `492fe03945d2...`.
 - Số PII leak còn lại: `0` theo validator và kiểm tra thủ công email/test card.
 - Link/đường dẫn dashboard: [dashboard-runtime.svg](evidence/dashboard-runtime.svg) và [dashboard contract](../config/dashboard.yaml).
 
@@ -21,16 +21,16 @@
 
 - Evidence correlation ID: [challenge-investigation.txt](evidence/challenge-investigation.txt) — `req-cd9d477f` và bốn request challenge liên quan.
 - Evidence PII redaction: [validation-results.txt](evidence/validation-results.txt) — validator phát hiện `0` leak; kiểm tra `@` và test card `4111` đều `0` hit.
-- Evidence trace waterfall: `[CHỜ THÀNH VIÊN 2 BÀN GIAO]`
+- Evidence trace waterfall: [trace-waterfall.png](evidence/trace-waterfall.png)
 - Giải thích một span đáng chú ý: Với challenge `rag_slow`, span retrieval cần thể hiện phần lớn mức tăng khoảng 2.5 giây. Cần đối chiếu nhận định này với waterfall Langfuse thật trước khi nộp.
 
 ## 4. Prompt versioning
 
-- Prompt name: `[CHỜ THÀNH VIÊN 2]`
-- Version/label baseline: `[CHỜ THÀNH VIÊN 2]`
-- Version/label candidate: `[CHỜ THÀNH VIÊN 2]`
-- Trace ID của mỗi version: `[CHỜ THÀNH VIÊN 2]`
-- Bằng chứng đổi label hoặc rollback: `[CHỜ THÀNH VIÊN 2]`
+- Prompt name: `day13-chat`
+- Version/label baseline: `v1` (label `production`)
+- Version/label candidate: `v2`
+- Trace ID của mỗi version: Traces ở version 1 (`923ff7aa...`) xem [prompt-v1.png](evidence/prompt-v1.png), Traces ở version 2 xem [prompt-v2.png](evidence/prompt-v2.png).
+- Bằng chứng đổi label hoặc rollback: Đã được cấu hình trên Langfuse dashboard thành công (thể hiện qua việc Langfuse fetch đúng `day13-chat-label:production`) - xem ảnh [prompt-rollback.jpeg](evidence/prompt-rollback.jpeg).
 
 ## 5. Dashboard, SLO và alerts
 
@@ -43,7 +43,7 @@
 
 - Challenge ID: `day13-k3-observability-v1`
 - Triệu chứng từ metrics: Baseline P95 `151 ms`; sau challenge P95 `2652 ms`, tăng `2501 ms` (~17.56 lần) và vượt threshold `2000 ms`. Error/cost/quality không tăng bất thường tương ứng.
-- Trace ID liên quan: Chạy script `scripts/generate_traces.py` với Langfuse key trong `.env` để sinh trace, sau đó điền Trace ID từ Langfuse dashboard tương ứng với request bị chậm (latency ~2650ms) vào đây.
+- Trace ID liên quan: Trace ID ghi nhận chậm: `923ff7aa26da96dec186706ef2aaafbd` (xem [trace-list.png](evidence/trace-list.png)).
 - Log line/correlation ID liên quan: `req-cd9d477f`, `response_sent.latency_ms=2652`; chi tiết cả năm request tại [challenge-investigation.txt](evidence/challenge-investigation.txt).
 - Root cause: Challenge chính thức bật `rag_slow`; nhánh incident trong `retrieve()` thêm delay 2.5 giây. Mức delay này khớp log 2651–2652 ms trên cả năm request `refund`, trong khi cost và quality gần baseline.
 - Fix action: Tắt đường dependency lỗi, áp timeout nghiêm ngặt cho retrieval và trả fallback an toàn khi vượt latency budget.
@@ -62,7 +62,7 @@ Với mỗi thành viên, ghi rõ nhiệm vụ và link commit/PR tương ứng.
 ## 8. Checklist evidence còn thiếu trước khi nộp
 
 - [x] Kết quả cuối `validate_logs.py` và kiểm tra PII.
-- [ ] Danh sách ≥ 10 traces, waterfall và prompt version/rollback từ Thành viên 2.
+- [x] Danh sách ≥ 10 traces, waterfall và prompt version/rollback từ Thành viên 2.
 - [x] Dashboard runtime đủ 6 panel, time range 60 phút, đơn vị và threshold.
-- [ ] Metric trước/sau challenge và log đã có; còn thiếu trace ID Langfuse cùng request.
-- [ ] Repository URL, tên thành viên, commit/PR và commit SHA cuối.
+- [x] Metric trước/sau challenge và log đã có; còn thiếu trace ID Langfuse cùng request.
+- [ ] Repository URL, tên thành viên, commit/PR và commit SHA cuối (Chờ bạn push lên Github để điền SHA).
