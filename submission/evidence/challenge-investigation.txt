@@ -1,0 +1,33 @@
+Challenge ID: day13-k3-observability-v1
+Incident configured by the released file: rag_slow
+Affected feature: refund
+Challenge threshold: 2000 ms
+
+METRICS
+Baseline (10 requests): latency P50/P95/P99 = 151/151/151 ms; total cost = 0.0219 USD; quality average = 0.88.
+After challenge (15 cumulative requests): latency P50/P95/P99 = 151/2652/2652 ms; total cost = 0.0322 USD; quality average = 0.8733.
+Symptom: P95 increased by 2501 ms (approximately 17.56x) and exceeded the 2000 ms challenge threshold.
+
+TRACE
+Langfuse tracing was disabled in this local run because no LANGFUSE credentials were present. A trace ID cannot be truthfully recorded from this run. The request correlation ID below is the local fallback evidence and must be replaced/supplemented with the matching Langfuse trace ID before final submission.
+
+LOG
+Representative correlation ID: req-cd9d477f
+request_received: feature=refund, session_id=k3-challenge-s03, timestamp=2026-08-11T03:07:05.857196Z
+response_sent: latency_ms=2652, cost_usd=0.002382, tokens_in=34, tokens_out=152, quality_score=0.8, timestamp=2026-08-11T03:07:08.514344Z
+
+All five official challenge requests had response_sent.latency_ms between 2651 and 2652 ms:
+- req-cd9d477f: 2652 ms
+- req-a0089060: 2651 ms
+- req-b1bde4d8: 2651 ms
+- req-3569d41d: 2651 ms
+- req-1dd105c1: 2651 ms
+
+ROOT CAUSE
+The released challenge selects rag_slow. When this incident is enabled, app/mock_rag.py deliberately sleeps for 2.5 seconds inside retrieve(). The measured ~2652 ms application latency and consistent impact across all refund requests match that injected retrieval delay. Cost, error and quality stayed broadly stable, isolating the symptom to latency rather than failure, token or quality degradation.
+
+FIX ACTION
+Disable the faulty incident/dependency path, add a strict retrieval timeout and serve a safe fallback response when retrieval exceeds the latency budget.
+
+PREVENTIVE MEASURE
+Instrument retrieve and generate as child spans, alert when P95 exceeds 3000 ms for five minutes, add dependency latency metrics and circuit-breaker/timeout tests, and verify recovery with the same workload after mitigation.
