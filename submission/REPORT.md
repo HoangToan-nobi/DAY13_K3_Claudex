@@ -3,8 +3,8 @@
 ## 1. Thông tin nhóm
 
 - Tên nhóm: `DAY13_2A202601273_HOANGSYTOAN`
-- Repository URL: `https://github.com/HoangToan-nobi/DAY13_K3_Claudex`
-- Commit SHA cuối: `ab262d355cf631eb79476ce9174226dc1f952e8b`
+- Repository URL: `https://github.com/HoangToan-nobi/DAY13_2A202601273_HOANGSYTOAN`
+- Commit SHA cuối: `[CẬP NHẬT SAU COMMIT CUỐI]`
 - Thành viên và vai trò:
   - `Hoàng Sỹ Toàn - 2A202601273` — Logging & PII
   - `Nguyễn Phương Linh - 2A202601355` — Tracing & Prompt Version
@@ -22,7 +22,7 @@
 - Evidence correlation ID: [challenge-investigation.txt](evidence/challenge-investigation.txt) — `req-cd9d477f` và bốn request challenge liên quan.
 - Evidence PII redaction: [validation-results.txt](evidence/validation-results.txt) — validator phát hiện `0` leak; kiểm tra `@` và test card `4111` đều `0` hit.
 - Evidence trace waterfall: [trace-waterfall.png](evidence/trace-waterfall.png)
-- Giải thích một span đáng chú ý: Với challenge `rag_slow`, span retrieval cần thể hiện phần lớn mức tăng khoảng 2.5 giây. Cần đối chiếu nhận định này với waterfall Langfuse thật trước khi nộp.
+- Giải thích một span đáng chú ý: Với challenge `rag_slow`, span retrieval phải thể hiện phần lớn mức tăng khoảng 2.5 giây; cần bảo đảm ảnh evidence là màn hình waterfall chi tiết của trace Langfuse, không phải biểu đồ tổng hợp.
 
 ## 4. Prompt versioning
 
@@ -57,4 +57,4 @@ Với mỗi thành viên, ghi rõ nhiệm vụ và link commit/PR tương ứng.
 |---|---|---|---|
 | `Hoàng Sỹ Toàn` | Correlation ID, JSON logging, metadata và PII redaction | `e931dc3` | Bảo toàn context request và scrub PII trước khi ghi log. |
 | `Nguyễn Phương Linh` | Trace correlation metadata và test liên quan | `f06f615` | Liên kết correlation ID giữa log và trace. |
-| `Đặng Quốc Huy` | Dashboard contract/spec, SLO, alerts, runbook, incident và tổng hợp report | `97cc025`; `11ee5cf03a...` | Thiết kế alert theo triệu chứng và điều tra theo Metrics → Traces → Logs. |
+| `Đỗ Thái Dương` | Dashboard contract/spec, SLO, alerts, runbook, incident và tổng hợp report | `97cc025` | Thiết kế alert theo triệu chứng và điều tra theo Metrics → Traces → Logs. |
