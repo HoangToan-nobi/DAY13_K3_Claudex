@@ -43,7 +43,7 @@
 
 - Challenge ID: `day13-k3-observability-v1`
 - Triệu chứng từ metrics: Baseline P95 `151 ms`; sau challenge P95 `2652 ms`, tăng `2501 ms` (~17.56 lần) và vượt threshold `2000 ms`. Error/cost/quality không tăng bất thường tương ứng.
-- Trace ID liên quan: Chưa thể thu trace ID trong lần chạy local vì `tracing_enabled=false`; cần bổ sung trace Langfuse của cùng request trước khi nộp.
+- Trace ID liên quan: Chạy script `scripts/generate_traces.py` với Langfuse key trong `.env` để sinh trace, sau đó điền Trace ID từ Langfuse dashboard tương ứng với request bị chậm (latency ~2650ms) vào đây.
 - Log line/correlation ID liên quan: `req-cd9d477f`, `response_sent.latency_ms=2652`; chi tiết cả năm request tại [challenge-investigation.txt](evidence/challenge-investigation.txt).
 - Root cause: Challenge chính thức bật `rag_slow`; nhánh incident trong `retrieve()` thêm delay 2.5 giây. Mức delay này khớp log 2651–2652 ms trên cả năm request `refund`, trong khi cost và quality gần baseline.
 - Fix action: Tắt đường dependency lỗi, áp timeout nghiêm ngặt cho retrieval và trả fallback an toàn khi vượt latency budget.
