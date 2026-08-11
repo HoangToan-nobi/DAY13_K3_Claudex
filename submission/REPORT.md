@@ -4,7 +4,7 @@
 
 - Tên nhóm: `DAY13_2A202601273_HOANGSYTOAN`
 - Repository URL: `https://github.com/HoangToan-nobi/DAY13_2A202601273_HOANGSYTOAN`
-- Commit SHA cuối: `a3108839107e2a891bfd371a1f382fd69a1e40df`
+- Commit SHA cuối: `b4795b2dba3ba41a65fd2675153aa68141e79cfc`
 - Thành viên và vai trò:
   - `Hoàng Sỹ Toàn - 2A202601273` - Logging & PII
   - `Nguyễn Phương Linh - 2A202601355` - Tracing & Prompt Version
